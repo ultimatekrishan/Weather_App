@@ -9,4 +9,5 @@
     <string name="humidity">Humidity</string>
     <string name="visibility">Visibility</string>
     <string name="Location_Activity">Location</string>
+    <string name="date">Date</string>
 </resources>

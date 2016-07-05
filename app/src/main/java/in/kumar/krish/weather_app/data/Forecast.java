@@ -10,6 +10,7 @@ import java.util.Date;
 public class Forecast implements JSONPopulator
 {
     private String date;
+    private int imageid;
     private int high;
     private int low;
     private String description;
@@ -30,12 +31,18 @@ public class Forecast implements JSONPopulator
         return description;
     }
 
+    public int getImageid() {
+        return imageid;
+    }
+
     @Override
+
     public void populate(JSONObject data)
     {
         date = data.optString("date");
         high = data.optInt("high");
         low =  data.optInt("low");
         description =  data.optString("text");
+        imageid = data.optInt("code");
     }
 }

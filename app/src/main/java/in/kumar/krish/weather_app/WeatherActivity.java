@@ -44,9 +44,6 @@ public class WeatherActivity extends AppCompatActivity implements WeatherService
     private YahooWeatherService service;
     private ProgressDialog dialog;
 
-    private ListView mainlistview;
-    private ArrayAdapter<String> listadapter;
-    String[] datefeed,highfeed,lowfeed,descriptionfeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +60,11 @@ public class WeatherActivity extends AppCompatActivity implements WeatherService
         humidityTextView=(TextView)findViewById(R.id.humidityTextView);
         visibilityTextView=(TextView)findViewById(R.id.visibilityTextView);
 
-
-        mainlistview = (ListView) findViewById( R.id.forecastListView);
-        listadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        mainlistview.setAdapter(listadapter);
-
-
         service=new YahooWeatherService(this);
         dialog= new ProgressDialog(this);
         dialog.setMessage("Loading.........");
         dialog.show();
-        service.refreshWeather("Delhi");
+        service.refreshWeather("Dwarka,Delhi");
 
         ImageView Yahoo_image = (ImageView)findViewById(R.id.yahoo);
         Yahoo_image.setOnClickListener(new View.OnClickListener(){
@@ -124,14 +115,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherService
         humidityTextView.setText(atmosphere.getHumidity()+"\u0025");
         visibilityTextView.setText(atmosphere.getVisibility()+"\u006d");
 
-        for(int i =0;i<5;i++)
-        {
-            datefeed[i] = forecast.getDate();
-            highfeed[i] = String.valueOf(forecast.getHigh());
-            lowfeed[i] = String.valueOf(forecast.getLow());
-            descriptionfeed[i] = forecast.getDescription();
-            listadapter.addAll(datefeed[i],highfeed[i],lowfeed[i],descriptionfeed[i]);
-        }
+
 
 
 
